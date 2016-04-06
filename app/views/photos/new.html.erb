@@ -1,4 +1,6 @@
 <h1>Add a Photo</h1>
+<%= link_to "Back to Photos", photos_path %>
+<!--Using photos_path instead or _url because we are in view and we don't need the full url, thats or controllers  -->
 
 <%= form_for @photo do |f|%>
   <p>
