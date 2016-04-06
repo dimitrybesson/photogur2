@@ -15,6 +15,7 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     if @photo.save
       redirect_to photos_url
+      #render :index # Render simply displays the index page, it does not do a new get request to /photos, and thus the photos#index method is never executed, and there is no @photos for the index.html.erb page to work with
     else
       render :new
     end
