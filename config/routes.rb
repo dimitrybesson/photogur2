@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
   root 'photos#index'
 
-  get '/photos' => 'photos#index'
-
-  get '/photos/new' => 'photos#new'
-  post '/photos' => 'photos#create'
-
-  get '/photos/:id' => 'photos#show', as: 'photo'
-
-  get '/photos/:id/edit' => 'photos#edit', as: "edit_photo"
-  patch '/photos/:id' => 'photos#update'
-
-  delete '/photos/:id' => 'photos#destroy', as: 'delete_photo'
+  # get '/photos' => 'photos#index'
+  #
+  # get '/photos/new' => 'photos#new'
+  # post '/photos' => 'photos#create'
+  #
+  # get '/photos/:id' => 'photos#show', as: 'photo'
+  #
+  # get '/photos/:id/edit' => 'photos#edit', as: "edit_photo"
+  # patch '/photos/:id' => 'photos#update'
+  #
+  # delete '/photos/:id' => 'photos#destroy', as: 'delete_photo'
+  resources :photos
 
 
   # The priority is based upon order of creation: first created -> highest priority.
