@@ -1,0 +1,24 @@
+<h1>Edit Picture</h1>
+
+<p>
+  <!-- <%= link_to "Back", photo_path(params[:id]) %> -->
+  <%= link_to "Back", @photo %>
+</p>
+
+<%= form_for @photo do |f| %>
+  <p>
+    <%= f.label :artist %>
+    <%= f.text_field :artist %>
+  </p>
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.submit "Save" %>
+  </p>
+<% end %>
