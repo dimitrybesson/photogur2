@@ -1,6 +1,21 @@
 <h1>Photos</h1>
 <%= link_to "New Photo", '/photos/new' %>
 
+<%= form_tag root_path, method: :get do %>
+  <%= label_tag :search_value %>
+  <%= text_field_tag :search_value %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+
+<!-- <form action="/search" method="get">
+  <label for="search-value"></label>
+  <input type="text" id ="search-value" name="value">
+  <input type="submit" value="Search">
+</form> -->
+
+
+
 <% @photos.each do |photo| %>
   <p>
     <strong><%= photo.title %></strong>, by: <%= photo.artist %>

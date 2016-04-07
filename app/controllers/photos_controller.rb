@@ -1,6 +1,10 @@
 class PhotosController < ApplicationController
   def index
-    @photos = Photo.all
+    if params[:search_value]
+      @photos = Photo.where(title: params[:search_value])
+    else
+      @photos = Photo.all
+    end
   end
 
   def show
@@ -39,6 +43,30 @@ class PhotosController < ApplicationController
     @photo.destroy
 
     redirect_to photos_url
+  end
+
+#search based on full title of full author name
+  # def search
+  #   @search_results = Photo.all.select do |photo|
+  #     if photo.attributes.values.include?(params[:value])
+  #       photo
+  #     end
+  #   end
+  # end
+# search based on any work in any attribute
+  def search
+    #byebug
+    @search_results = Photo.all.select do |photo|
+      if
+        value_list = photo.attributes.values #list of values
+        value_list.each do |value|
+          if value.include?(params[:value])
+            photo
+          end
+        end
+      end
+
+    end
   end
 
   private

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'photos#index'
 
+  get "/search" => 'photos#search'
   # get '/photos' => 'photos#index'
   #
   # get '/photos/new' => 'photos#new'
@@ -13,6 +14,8 @@ Rails.application.routes.draw do
   #
   # delete '/photos/:id' => 'photos#destroy', as: 'delete_photo'
   resources :photos
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
