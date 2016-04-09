@@ -1,7 +1,8 @@
 class PhotosController < ApplicationController
   def index
+    #binding.pry
     if params[:search_value]
-      @photos = Photo.where(title: params[:search_value])
+      @photos = Photo.where("title like ? or artist like ?", "%#{params[:search_value]}%", "%#{params[:search_value]}%")
     else
       @photos = Photo.all
     end
@@ -54,20 +55,6 @@ class PhotosController < ApplicationController
   #   end
   # end
 # search based on any work in any attribute
-  def search
-    #byebug
-    @search_results = Photo.all.select do |photo|
-      if
-        value_list = photo.attributes.values #list of values
-        value_list.each do |value|
-          if value.include?(params[:value])
-            photo
-          end
-        end
-      end
-
-    end
-  end
 
   private
   def photo_params
