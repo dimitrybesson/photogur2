@@ -2,21 +2,28 @@
 <%= link_to "New Photo", '/photos/new' %>
 
 <%= form_tag root_path, method: :get do %>
-  <%= label_tag :search_value %>
+  <%= label_tag :search_value, "Search by:" %>
   <%= text_field_tag :search_value, params[:search_value] %>
   <%= submit_tag "Search" %>
 <% end %>
 
 <%= link_to "View All", root_path %>
 
-<!-- <form action="/search" method="get">
-  <label for="search-value"></label>
-  <input type="text" id ="search-value" name="value">
-  <input type="submit" value="Search">
-</form> -->
+<h1>Most Recent (<%= @most_recent_photos.count %>)</h1>
+<ul>
+  <% @most_recent_photos.each do |photo| %>
+  <li><%= link_to photo.title, photo_path(photo.id) %></li>
+  <% end %>
+</ul>
 
+<h1>Created a Week ago (<%= @created_before_photos.count %>)</h1>
+<ul>
+  <% @created_before_photos.each do |photo| %>
+  <li>link_to photo.title, photo_path(photo.id) </li>
+  <% end %>
+</ul>
 
-
+<h1>Current (<%=@photos.count %>)</h1>
 <% @photos.each do |photo| %>
   <p>
     <strong><%= photo.title %></strong>, by: <%= photo.artist %>

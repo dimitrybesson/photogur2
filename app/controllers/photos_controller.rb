@@ -1,8 +1,10 @@
 class PhotosController < ApplicationController
   def index
     #binding.pry
+    @most_recent_photos = Photo.most_recent_five
+    @created_before_photos = Photo.created_before(1.week.ago)
     if params[:search_value]
-      @photos = Photo.where("title like ? or artist like ?", "%#{params[:search_value]}%", "%#{params[:search_value]}%")
+      @photos = Photo.where("title like ? or artist like ?", "%#{params[:search_value]}%", "%#{params[:search_value]}%")  
     else
       @photos = Photo.all
     end
